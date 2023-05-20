@@ -7,6 +7,7 @@ import java.util.List;
 
 @Configuration
 public class AppConfiguration {
+
     // to też jest komponent, ale tworzony jawnie przez wywołanie konstruktora
     // i produkuje zależność dla klasy Menu
     // 1. ważny typ zwracany
@@ -27,5 +28,15 @@ public class AppConfiguration {
                         .action(() -> {})
                         .build()
         );
+    }
+
+    @Bean
+    public String appName(){
+        return "Książka adresowa";
+    }
+
+    @Bean
+    public String version(){
+        return "1.0.1";
     }
 }

@@ -14,15 +14,18 @@ public class FirstSpringAppApplication implements CommandLineRunner {
     private final Menu menu;
     // zależność klasy wstrzykiwana przez pole
 
-    @Autowired
+    @Autowired          // konieczne!!!
     private Header header;
     //wstrzykiwanie zależności przez konstruktor -zalecane!!!
+    @Autowired          // zbędne, działa też bez adnotacji
     public FirstSpringAppApplication(Menu menu) {
         this.menu = menu;
     }
 
     public static void main(String[] args) {
+
         SpringApplication.run(FirstSpringAppApplication.class, args);
+
     }
 
     @Override
