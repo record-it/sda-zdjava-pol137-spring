@@ -42,6 +42,7 @@ public class ScannerController {
                                 .label("Wyjście")
                                 .action(() -> exit())
                                 .build()
+
                 )
         );
     }
@@ -73,8 +74,9 @@ public class ScannerController {
     }
 
     public void findAddresses(){
-        // zaimplementuj metodę
-        // dodaj pozycję menu w kontrolerze
+        System.out.println("Podaj wzorzec: ");
+        String pattern = scanner.nextLine();
+        service.findByUsernamePattern(pattern).forEach(System.out::println);
     }
 
     public void findAll(){
