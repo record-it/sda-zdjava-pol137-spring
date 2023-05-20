@@ -6,20 +6,21 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import pl.sda.zdjavapol137.firstspringapp.console.Header;
 import pl.sda.zdjavapol137.firstspringapp.console.Menu;
+import pl.sda.zdjavapol137.firstspringapp.controller.ScannerController;
 
 @SpringBootApplication
 public class FirstSpringAppApplication implements CommandLineRunner {
 
     //zależność klasy wstrzykiwana przez konstruktor
-    private final Menu menu;
+    private final ScannerController controller;
     // zależność klasy wstrzykiwana przez pole
 
     @Autowired          // konieczne!!!
     private Header header;
     //wstrzykiwanie zależności przez konstruktor -zalecane!!!
     @Autowired          // zbędne, działa też bez adnotacji
-    public FirstSpringAppApplication(Menu menu) {
-        this.menu = menu;
+    public FirstSpringAppApplication(ScannerController controller) {
+        this.controller = controller;
     }
 
     public static void main(String[] args) {
@@ -30,14 +31,6 @@ public class FirstSpringAppApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        if (menu != null) {
-            header.print();
-            menu.print();
-        } else {
-            System.out.println("Brak menu!");
-        }
+        controller.mainLoopRun();
     }
-
-    //Tworzenie komponentu zwracanego przez metodę
-
 }

@@ -3,6 +3,7 @@ package pl.sda.zdjavapol137.firstspringapp.console;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Scanner;
 
 @Component
 public class Menu {
@@ -19,5 +20,10 @@ public class Menu {
         for(var item: items){
             System.out.println(i++ +". "+item.getLabel());
         }
+    }
+
+    public void runAction(int option){
+        //TODO dodać sprawdzanie poprawności option
+        items.get(option - 1).getAction().run();
     }
 }
